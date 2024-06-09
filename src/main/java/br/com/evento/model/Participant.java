@@ -24,6 +24,10 @@ public class Participant {
     @Column(nullable = false)
     private LocalDate eventDate;
 
+
+    @Column(nullable = false)
+    private String UniqueCode;
+
     // Getters and setters
 
     public Long getId() {
@@ -65,6 +69,16 @@ public class Participant {
     public void setEventDate(LocalDate eventDate) {
         this.eventDate = eventDate;
     }
+
+
+    public String getUniqueCode() {
+        return UniqueCode;
+    }
+
+    public void setUniqueCode(String uniqueCode) {
+        UniqueCode = uniqueCode;
+    }
+
 
 
 }

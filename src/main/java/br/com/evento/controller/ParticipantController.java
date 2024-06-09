@@ -8,8 +8,10 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import java.time.LocalDate;
+import java.util.UUID;
 
 @Controller
 public class ParticipantController {
@@ -30,11 +32,26 @@ public class ParticipantController {
     public String registerParticipant(@ModelAttribute Participant participant, Model model) {
         try {
             participant.setEventDate(LocalDate.of(2024, 12, 31)); // Data do evento
+
+            // Gera um código único para o participante
+            String uniqueCode = UUID.randomUUID().toString();
+            participant.setUniqueCode(uniqueCode);
+
             participantService.saveParticipant(participant);
-            model.addAttribute("successMessage", "Registration successful!");
+
+            // Redireciona para a página de confirmação com o código único
+            return "redirect:/confirmation?code=" + uniqueCode;
+
         } catch (IllegalStateException e) {
             model.addAttribute("errorMessage", e.getMessage());
+            return showHomePage(model);
         }
-        return showHomePage(model);
+    }
+
+    @GetMapping("/confirmation")
+    public String showConfirmationPage(@RequestParam("code") String code, Model model) {
+        model.addAttribute("successMessage", "Inscrição feita com sucesso!");
+        model.addAttribute("uniqueCode", code);
+        return "confirmation";
     }
 }
