@@ -27,6 +27,11 @@ public class ParticipantService {
         return participantRepository.save(participant);
     }
 
+    public Optional<Participant> findByEmailOrPhoneNumber(String email, String phoneNumber) {
+        // Procura um participante na base de dados pelo email OU pelo telefone
+        return participantRepository.findByEmail(email);
+    }
+
     public long getDaysUntilEvent(LocalDate eventDate) {
         return LocalDate.now().until(eventDate).getDays();
     }
