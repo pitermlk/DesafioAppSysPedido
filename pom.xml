@@ -10,7 +10,7 @@
         <relativePath/>
     </parent>
     <groupId>br.com.my-event-app</groupId>
-    <artifactId>evento</artifactId>
+    <artifactId>desafio</artifactId>
     <version>0.0.1-SNAPSHOT</version>
     <name>evento</name>
     <description>Aplicação para confirmar presença e realizar inscrições.</description>
@@ -47,6 +47,18 @@
             <artifactId>mysql-connector-j</artifactId>
             <version>8.2.0</version>
         </dependency>
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+            <scope>provided</scope>
+        </dependency>
+
+        <dependency>
+            <groupId>org.springdoc</groupId>
+            <artifactId>springdoc-openapi-ui</artifactId>
+            <version>1.6.8</version>
+        </dependency>
+
     </dependencies>
     <build>
         <plugins>
