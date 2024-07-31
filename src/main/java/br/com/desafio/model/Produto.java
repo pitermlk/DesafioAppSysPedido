@@ -13,4 +13,11 @@ public class Produto {
     private Long id;
     private String nome;
     private double preco;
+
+    public Produto(String s, double v) {
+    }
+
+    public Produto() {
+
+    }
 }
